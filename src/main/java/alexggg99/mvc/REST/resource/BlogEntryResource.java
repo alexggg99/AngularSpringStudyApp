@@ -1,6 +1,5 @@
 package alexggg99.mvc.REST.resource;
 
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 /**

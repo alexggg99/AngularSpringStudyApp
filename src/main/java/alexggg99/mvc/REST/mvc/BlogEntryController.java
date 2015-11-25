@@ -1,8 +1,11 @@
 package alexggg99.mvc.REST.mvc;
 
+import alexggg99.mvc.REST.resource.BlogEntryResource;
+import alexggg99.mvc.REST.resource.asm.BlogEntryResourceAsm;
 import alexggg99.mvc.core.entities.BlogEntry;
 import alexggg99.mvc.core.services.BlogEntryService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Controller
+@RequestMapping("/rest/blog-entries")
 public class BlogEntryController {
 
     private BlogEntryService blogEntryService;
@@ -24,10 +28,16 @@ public class BlogEntryController {
         return entry;
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
-    @ResponseStatus(code = HttpStatus.OK)
-    public void get(){
-
+    @RequestMapping(value="/{blogEntryId}",
+            method = RequestMethod.GET)
+    public ResponseEntity<BlogEntryResource> getBlogEntry(@PathVariable long blogEntryId){
+        BlogEntry entry = blogEntryService.find(blogEntryId);
+        if(entry != null){
+            BlogEntryResource resource = new BlogEntryResourceAsm().toResource(entry);
+            return new ResponseEntity<BlogEntryResource>(resource, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<BlogEntryResource>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

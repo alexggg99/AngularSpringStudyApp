@@ -39,15 +39,41 @@ public class BlogEntryControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(blogEntryController).build();
     }
 
+//    @Test
+//    public void testBlogEntryControllerTest() throws Exception {
+//        BlogEntry entry = new BlogEntry();
+//        entry.setId(1L);
+//        entry.setTitle("Test Title");
+//        mockMvc.perform(post("/test").content("{\"title\" : \"Test Blog Title\"}")
+//                .contentType(MediaType.APPLICATION_JSON)).andDo(print())
+//                .andExpect(jsonPath("$.title", is("Test Blog Title")));
+//    }
+
     @Test
-    public void testBlogEntryController() throws Exception {
+    public void testGetExistingBlogTest() throws Exception{
         BlogEntry entry = new BlogEntry();
         entry.setId(1L);
         entry.setTitle("Test Title");
-        mockMvc.perform(post("/test").content("{\"title\" : \"Test Blog Title\"}")
-                .contentType(MediaType.APPLICATION_JSON)).andDo(print())
-                .andExpect(jsonPath("$.title", is("Test Blog Title")));
+
+        when(blogEntryService.find(1L)).thenReturn(entry);
+
+        mockMvc.perform(get("/rest/blog-entries/1"))
+                .andDo(print())
+                .andExpect(jsonPath("$.title", is("Test Title")))
+                .andExpect(jsonPath("$.links[*].href", hasItem(endsWith("blog-entries/1"))))
+                .andExpect(status().isOk());
     }
 
+    @Test
+    public void testGetNonExistingBlogTest() throws Exception{
+        BlogEntry entry = new BlogEntry();
+        entry.setId(1L);
+        entry.setTitle("Test Title");
+
+        when(blogEntryService.find(1L)).thenReturn(null);
+
+        mockMvc.perform(get("/rest/blog-entries/1"))
+                .andExpect(status().isNotFound());
+    }
 
 }
