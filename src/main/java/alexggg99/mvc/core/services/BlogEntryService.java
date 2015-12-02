@@ -8,5 +8,7 @@ import alexggg99.mvc.core.entities.BlogEntry;
 public interface BlogEntryService {
 
     BlogEntry find(Long id);
+    BlogEntry delete(long id);
+    BlogEntry update(long id, BlogEntry data);
 
 }

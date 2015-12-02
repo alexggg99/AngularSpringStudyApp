@@ -1,12 +1,13 @@
 package alexggg99.mvc.REST.resource;
 
+import alexggg99.mvc.core.entities.Blog;
 import alexggg99.mvc.core.entities.BlogEntry;
 import org.springframework.hateoas.ResourceSupport;
 
 /**
  * Created by alexggg99 on 25.11.15.
  */
-public class BlogEntryResource extends ResourceSupport {
+public class BlogResource extends ResourceSupport {
 
     private String title;
 
@@ -18,8 +19,8 @@ public class BlogEntryResource extends ResourceSupport {
         this.title = title;
     }
 
-    public BlogEntry toBlogEntry(){
-        BlogEntry entry = new BlogEntry();
+    public Blog toBlog(){
+        Blog entry = new Blog();
         entry.setTitle(title);
         return entry;
     }
