@@ -1,12 +1,18 @@
 package alexggg99.mvc.core.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Created by alexggg99 on 25.11.15.
  */
 
-
+@Entity
 public class Account {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String password;

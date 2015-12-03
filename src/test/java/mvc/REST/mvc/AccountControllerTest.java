@@ -1,3 +1,5 @@
+package mvc.REST.mvc;
+
 import alexggg99.mvc.REST.mvc.AccountController;
 import alexggg99.mvc.REST.mvc.BlogController;
 import alexggg99.mvc.core.entities.Account;
