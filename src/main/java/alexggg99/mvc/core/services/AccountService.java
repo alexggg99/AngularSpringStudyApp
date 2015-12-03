@@ -9,7 +9,7 @@ import alexggg99.mvc.core.entities.Blog;
 public interface AccountService {
 
     Account find(Long id);
-    Account createAccount(long id);
-    Blog createAccount(Long accountId, Blog data);
+    Account createAccount(Account data);
+    Blog createBlog(Long accountId, Blog data);
 
 }

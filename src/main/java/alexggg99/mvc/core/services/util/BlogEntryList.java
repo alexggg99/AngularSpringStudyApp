@@ -10,15 +10,15 @@ import java.util.List;
  * Created by alexggg99 on 02.12.15.
  */
 public class BlogEntryList {
-    private List<BlogEntry> blogEntries = new ArrayList<BlogEntry>();
+    private List<BlogEntry> entries = new ArrayList<BlogEntry>();
     private Long blogId;
 
-    public List<BlogEntry> getBlogEntries() {
-        return blogEntries;
+    public List<BlogEntry> getEntries() {
+        return entries;
     }
 
-    public void setBlogEntries(List<BlogEntry> blogEntries) {
-        this.blogEntries = blogEntries;
+    public void setEntries(List<BlogEntry> entries) {
+        this.entries = entries;
     }
 
     public Long getBlogId() {

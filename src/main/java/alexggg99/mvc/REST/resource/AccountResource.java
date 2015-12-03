@@ -3,6 +3,7 @@ package alexggg99.mvc.REST.resource;
 import alexggg99.mvc.core.entities.Account;
 import alexggg99.mvc.core.entities.Blog;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.hateoas.ResourceSupport;
 
 /**
@@ -26,7 +27,7 @@ public class AccountResource extends ResourceSupport {
         return password;
     }
 
-    @JsonIgnore
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }

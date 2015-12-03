@@ -1,5 +1,6 @@
 package alexggg99.mvc.REST.resource.asm;
 
+import alexggg99.mvc.REST.mvc.AccountController;
 import alexggg99.mvc.REST.mvc.BlogController;
 import alexggg99.mvc.REST.resource.BlogResource;
 import alexggg99.mvc.core.entities.Blog;
@@ -22,9 +23,11 @@ public class BlogResourceAsm extends ResourceAssemblerSupport<Blog, BlogResource
     public BlogResource toResource(Blog blog) {
         BlogResource res = new BlogResource();
         res.setTitle(blog.getTitle());
-        Link link = linkTo(methodOn(BlogController.class).getBlog(blog.getId())).withSelfRel();
-        res.add(link.withSelfRel());
-        //Link link1 = linkTo()
+        res.add(linkTo(methodOn(BlogController.class).getBlog(blog.getId())).withSelfRel());
+        res.add(linkTo(BlogController.class).slash(blog.getId()).slash("entries").withRel("entries"));
+        if(blog.getOwner() != null){
+            res.add(linkTo(AccountController.class).slash(blog.getOwner().getId()).withRel("owner"));
+        }
         return res;
     }
 }

@@ -11,6 +11,8 @@ public class BlogEntry {
 
     private String title;
 
+    private Blog blog;
+
     public String getTitle() {
         return title;
     }
@@ -25,5 +27,13 @@ public class BlogEntry {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }
