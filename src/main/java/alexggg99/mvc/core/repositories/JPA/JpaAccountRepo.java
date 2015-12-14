@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by alexggg99 on 03.12.15.
@@ -20,8 +22,20 @@ public class JpaAccountRepo implements AccountRepo {
 
     @Override
     public Account createAccount(Account data) {
-        em.merge(data);
+        em.persist(data);
         return data;
+    }
+
+    @Override
+    public Account findAccountByName(String name) {
+        Query query = em.createQuery("Select a from Account a where a.name = ?1");
+        query.setParameter(1, name);
+        List<Account> list = query.getResultList();
+        if(list == null){
+            return null;
+        }else{
+            return list.get(0);
+        }
     }
 
     @Override
@@ -30,7 +44,9 @@ public class JpaAccountRepo implements AccountRepo {
     }
 
     @Override
-    public Blog createBlog(Long accountId, Blog data) {
-        return null;
+    public List<Account> findAllAccounts() {
+        Query query = em.createQuery("Select a from Account a");
+        return query.getResultList();
     }
+
 }

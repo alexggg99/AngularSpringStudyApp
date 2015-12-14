@@ -11,6 +11,13 @@ import java.util.List;
 public class BlogList {
     private List<Blog> blogs = new ArrayList<Blog>();
 
+    public BlogList(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public BlogList() {
+    }
+
     public List<Blog> getBlogs() {
         return blogs;
     }

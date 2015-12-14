@@ -19,6 +19,7 @@ import alexggg99.mvc.core.services.Exceptions.AccountDoesNotExist;
 import alexggg99.mvc.core.services.Exceptions.AccountExistException;
 import alexggg99.mvc.core.services.Exceptions.BlogExistsException;
 import alexggg99.mvc.core.services.util.BlogList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,13 +41,14 @@ public class AccountController {
 
     private AccountService accountService;
 
+    @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
 
     @RequestMapping(value="/{accountId}", method = RequestMethod.GET)
     public ResponseEntity<AccountResource> getAccount(@PathVariable long accountId){
-        Account entry = accountService.find(accountId);
+        Account entry = accountService.findAccount(accountId);
         if(entry != null){
             AccountResource resource = new AccountResourceAsm().toResource(entry);
             return new ResponseEntity<AccountResource>(resource, HttpStatus.OK);

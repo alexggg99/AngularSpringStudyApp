@@ -16,6 +16,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.cache.support.NullValue;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -24,12 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.endsWith;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -67,9 +64,11 @@ public class AccountControllerTest {
         account.setName("abv");
         account.setPassword("123");
 
-        when(accountService.find(1L)).thenReturn(account);
+        when(accountService.findAccount(1L)).thenReturn(account);
 
         mockMvc.perform(get("/rest/accounts/1"))
+                .andDo(print())
+                .andExpect(jsonPath("$.password").doesNotExist())
                 .andExpect(jsonPath("$.name", is(account.getName())))
                 .andExpect(jsonPath("$.links[*].href", hasItem(endsWith("accounts/1"))))
                 .andExpect(status().isOk());
@@ -77,7 +76,7 @@ public class AccountControllerTest {
 
     @Test
     public void getNotExistingAccountTest() throws Exception{
-        when(accountService.find(1L)).thenReturn(null);
+        when(accountService.findAccount(1L)).thenReturn(null);
         mockMvc.perform(get("/rest/accounts/1"))
                 .andExpect(status().isNotFound());
     }

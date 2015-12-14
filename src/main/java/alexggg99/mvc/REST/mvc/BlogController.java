@@ -16,6 +16,7 @@ import alexggg99.mvc.core.services.BlogService;
 import alexggg99.mvc.core.services.Exceptions.BlogNotFoundException;
 import alexggg99.mvc.core.services.util.BlogEntryList;
 import alexggg99.mvc.core.services.util.BlogList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ public class BlogController {
 
     private BlogService blogService;
 
+    @Autowired
     public BlogController(BlogService blogService) {
         this.blogService = blogService;
     }

@@ -1,5 +1,6 @@
 package mvc.REST.mvc;
 
+import alexggg99.mvc.REST.Exceptions.NotFoundException;
 import alexggg99.mvc.REST.mvc.BlogEntryController;
 import alexggg99.mvc.core.entities.BlogEntry;
 import alexggg99.mvc.core.services.BlogEntryService;

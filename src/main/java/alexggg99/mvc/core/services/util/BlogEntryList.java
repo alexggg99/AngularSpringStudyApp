@@ -13,6 +13,14 @@ public class BlogEntryList {
     private List<BlogEntry> entries = new ArrayList<BlogEntry>();
     private Long blogId;
 
+    public BlogEntryList(List<BlogEntry> entries, Long blogId) {
+        this.entries = entries;
+        this.blogId = blogId;
+    }
+
+    public BlogEntryList() {
+    }
+
     public List<BlogEntry> getEntries() {
         return entries;
     }

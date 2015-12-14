@@ -1,5 +1,6 @@
 package mvc.REST.mvc;
 
+import alexggg99.mvc.REST.Exceptions.NotFoundException;
 import alexggg99.mvc.REST.mvc.BlogController;
 import alexggg99.mvc.core.entities.Account;
 import alexggg99.mvc.core.entities.Blog;
@@ -155,7 +156,6 @@ public class BlogControllerTest {
                 .andExpect(jsonPath("$.links[*].href", hasItem(endsWith("1/blog-entries"))))
                     .andExpect(status().isOk());
     }
-
 
 
 }
