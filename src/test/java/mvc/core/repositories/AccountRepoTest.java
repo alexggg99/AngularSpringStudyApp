@@ -32,7 +32,6 @@ public class AccountRepoTest {
     public void setUp(){
         account = new Account();
         account.setName("test");
-        account.setId(1L);
         account.setPassword("123");
         repo.createAccount(account);
     }

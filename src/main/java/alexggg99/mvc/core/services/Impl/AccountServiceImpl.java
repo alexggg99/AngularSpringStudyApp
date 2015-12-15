@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * Created by alexggg99 on 14.12.15.
  */
+
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {

@@ -82,7 +82,7 @@ public class BlogController {
             BlogEntryList list = blogService.findAllBlogEntries(blogId);
             BlogEntryListResource res = new BlogEntryListResourceAsm().toResource(list);
             return new ResponseEntity<BlogEntryListResource>(res, HttpStatus.OK);
-        }catch(NotFoundException ex){
+        }catch(BlogNotFoundException ex){
             throw new NotFoundException(ex);
         }
     }

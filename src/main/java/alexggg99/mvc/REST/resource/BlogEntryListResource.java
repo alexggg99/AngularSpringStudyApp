@@ -13,8 +13,6 @@ public class BlogEntryListResource extends ResourceSupport {
 
     private List<BlogEntryResource> list = new ArrayList<BlogEntryResource>();
 
-    private String title;
-
     public List<BlogEntryResource> getList() {
         return list;
     }
@@ -23,11 +21,4 @@ public class BlogEntryListResource extends ResourceSupport {
         this.list = list;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

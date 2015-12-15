@@ -31,7 +31,7 @@ public class JpaAccountRepo implements AccountRepo {
         Query query = em.createQuery("Select a from Account a where a.name = ?1");
         query.setParameter(1, name);
         List<Account> list = query.getResultList();
-        if(list == null){
+        if(list.size() == 0){
             return null;
         }else{
             return list.get(0);

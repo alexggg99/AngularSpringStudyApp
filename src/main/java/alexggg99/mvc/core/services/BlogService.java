@@ -4,10 +4,12 @@ import alexggg99.mvc.core.entities.Blog;
 import alexggg99.mvc.core.entities.BlogEntry;
 import alexggg99.mvc.core.services.util.BlogEntryList;
 import alexggg99.mvc.core.services.util.BlogList;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by alexggg99 on 25.11.15.
  */
+
 public interface BlogService {
 
     Blog find(Long id);

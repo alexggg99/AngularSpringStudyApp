@@ -13,6 +13,8 @@
 
     <context:component-scan base-package="alexggg99.mvc.REST.mvc"/>
 
+    <mvc:resources mapping="/app/**" location="/app/www/"/>
+
     <mvc:annotation-driven/>
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

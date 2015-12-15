@@ -4,10 +4,12 @@ import alexggg99.mvc.core.entities.Account;
 import alexggg99.mvc.core.entities.Blog;
 import alexggg99.mvc.core.services.util.AccountList;
 import alexggg99.mvc.core.services.util.BlogList;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by alexggg99 on 25.11.15.
  */
+
 public interface AccountService {
 
     public Account findAccount(Long id);

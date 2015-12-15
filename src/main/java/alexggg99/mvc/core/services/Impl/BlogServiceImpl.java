@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by alexggg99 on 14.12.15.
  */
+
 @Service
 @Transactional
 public class BlogServiceImpl implements BlogService {

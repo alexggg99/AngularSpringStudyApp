@@ -44,7 +44,7 @@ public class JpaBlogRepo implements BlogRepo {
         Query query = em.createQuery("Select a from Blog a where a.title = ?1");
         query.setParameter(1, title);
         List<Blog> list = query.getResultList();
-        if(list == null){
+        if(list.size() == 0){
             return null;
         }else{
             return list.get(0);
